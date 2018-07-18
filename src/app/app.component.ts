@@ -3,8 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'travel app';
+  items: Observable<any[]>;
+
+  constructor () {
+    // this.items = db.collection('items').valueChanges();
+  }
 }
