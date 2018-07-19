@@ -1,10 +1,7 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<h1>
-  Welcome to my {{ title }}!
-</h1>
 <ul>
   <li class="text" *ngFor="let item of items | async">
-    {{item.name}}
+    {{item.day}}:
+    <div [innerHTML]="item.description"></div>
   </li>
 </ul>
 

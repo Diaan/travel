@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'travel app';
   items: Observable<any[]>;
 
-  constructor () {
-    // this.items = db.collection('items').valueChanges();
+  constructor (db: AngularFireDatabase) {
+    this.items = db.list('flamelink/environments/production/content/schemaDemo/en-US').valueChanges();
   }
 }
