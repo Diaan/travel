@@ -1,0 +1,25 @@
+:host{
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  font-weight: 800;
+  font-size: 24px;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+
+  &.inactive{
+    background-color: gray;
+  }
+
+  &.dark{
+    background-color: black;
+    color: #fff;
+  }
+
+  &.small{
+    height: 32px;
+    width: 32px;
+  }
+}

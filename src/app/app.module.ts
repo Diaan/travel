@@ -12,6 +12,8 @@ import { DayDescriptionComponent } from './day/day-description/day-description.c
 import { DayPlacesComponent } from './day/day-places/day-places.component';
 import { DayPhotosComponent } from './day/day-photos/day-photos.component';
 import { ItineraryDayComponent } from './itinerary/itinerary-day/itinerary-day.component';
+import { DayNumberComponent } from './shared/day-number/day-number.component';
+import { ItinerarySummaryComponent } from './shared/itinerary-summary/itinerary-summary.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ItineraryDayComponent } from './itinerary/itinerary-day/itinerary-day.c
     DayDescriptionComponent,
     DayPlacesComponent,
     DayPhotosComponent,
-    ItineraryDayComponent
+    ItineraryDayComponent,
+    DayNumberComponent,
+    ItinerarySummaryComponent
   ],
   imports: [
     BrowserModule,

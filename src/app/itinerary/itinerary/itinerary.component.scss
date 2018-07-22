@@ -1,0 +1,28 @@
+:host{
+  background: url("/assets/images/daniel-tseng-252379-unsplash.jpg") center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  padding: 16px;
+  overflow: hidden;
+
+  max-width: 440px;
+  max-height: 640px
+}
+
+.loading-message {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.itinerary {
+  overflow: auto;
+}
+
+ta-itinerary-day + ta-itinerary-day{
+  margin-top: 16px;
+}

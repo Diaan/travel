@@ -18,5 +18,4 @@ export class ItineraryComponent implements OnInit {
   getItinerary() {
     this.itineraryService.itinerary.subscribe(days => this.days = days);
   }
-
 }

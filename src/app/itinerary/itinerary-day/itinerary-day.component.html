@@ -1,2 +1,2 @@
-{{day.day}}: {{day.date| date : 'd MMMM'}}<br>
-{{(day.start | cityName) | async}} -> {{(day.end | cityName) | async}}
+<ta-day-number [number]="day.day" class="dark"></ta-day-number>
+<ta-itinerary-summary [day]="day"></ta-itinerary-summary>
