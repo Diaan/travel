@@ -1,36 +1,22 @@
 import { DestinationService, Destination, City } from './core/destination.service';
 import { Component, OnInit } from '@angular/core';
-import { of } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ta-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'travel app';
-  items: City[];
-  selectedDestination: Observable<Destination>;
+  cities: City[];
 
-  // get items (): Observable<City[]> {
-  //   return of([]);
-  //   // return this.destinations.cities;
-  // }
-
-  constructor (
-    private destinations: DestinationService
-  ) {}
+  constructor (private destinationService: DestinationService) {}
 
   ngOnInit() {
+    // refactor to observables (start with?)
     this.getCities();
   }
 
   getCities() {
-    this.destinations.cities.subscribe(cities => this.items = cities);
-  }
-
-  selectDestination(item) {
-    console.log(item);
-    this.selectedDestination = this.destinations.destinationDetails(item.id);
+    this.destinationService.cities.subscribe(cities => this.cities = cities);
   }
 }

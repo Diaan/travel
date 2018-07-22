@@ -1,13 +1,6 @@
-<ul>
-  <li class="text" *ngFor="let item of items" (click)="selectDestination(item)">
-    <div [innerHTML]="item.name"></div>
-  </li>
-</ul>
-
-<div *ngIf="(selectedDestination | async) as destination">
-  <ul>
-      <li class="text" *ngFor="let item of destination.highlights">
-        <div [innerHTML]="item.name"></div>
-      </li>
-    </ul>
-</div>
+<ng-container *ngIf="cities; else noGroups">
+  <ta-itinerary></ta-itinerary>
+</ng-container>
+<ng-template #noGroups>
+  loading cities...
+</ng-template>

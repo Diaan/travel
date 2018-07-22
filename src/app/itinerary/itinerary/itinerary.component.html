@@ -1,0 +1,6 @@
+<ng-container *ngIf="days; else noGroups">
+  <ta-itinerary-day *ngFor="let day of days" [day]="day"></ta-itinerary-day>
+</ng-container>
+<ng-template #noGroups>
+  loading itinerary...
+</ng-template>

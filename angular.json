@@ -123,5 +123,14 @@
       }
     }
   },
-  "defaultProject": "travel-app"
+  "defaultProject": "travel-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "ta",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "ta"
+    }
+  }
 }

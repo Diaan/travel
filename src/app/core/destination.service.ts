@@ -1,4 +1,3 @@
-import { Destination } from './destination.service';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
@@ -34,15 +33,22 @@ export class DestinationService {
     );
   }
 
-  private query(): Observable<any[]> {
-    return this.db.list('flamelink/environments/production/content/destinations/en-US').valueChanges();
-  }
-
   destinationDetails(id): Observable<Destination> {
-    console.log({id});
     return this.destinations.pipe(
       flatMap(destinations => destinations),
       filter(destination => destination.id === id) // destination.id === id)
     );
+  }
+
+  destinationName(id): Observable<string> {
+    return this.destinations.pipe(
+      flatMap(destinations => destinations),
+      filter(destination => destination.id === id),
+      map(destination => destination.name)
+    );
+  }
+
+  private query(): Observable<any[]> {
+    return this.db.list('flamelink/environments/production/content/destinations/en-US').valueChanges();
   }
 }
