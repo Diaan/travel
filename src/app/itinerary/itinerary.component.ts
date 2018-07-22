@@ -1,4 +1,4 @@
-import { ItineraryService, Day } from '../../core/itinerary.service';
+import { ItineraryService, Day } from '../core/itinerary.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
