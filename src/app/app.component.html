@@ -1,4 +1,4 @@
-<ng-container *ngIf="cities; else noGroups">
+<ng-container *ngIf="cities | async; else noGroups">
   <ta-itinerary></ta-itinerary>
 </ng-container>
 <ng-template #noGroups>

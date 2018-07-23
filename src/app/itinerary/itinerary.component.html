@@ -1,4 +1,4 @@
-<ng-container *ngIf="days; else noGroups">
+<ng-container *ngIf="days | async as days; else noGroups">
   <div class="itinerary">
     <ta-itinerary-day *ngFor="let day of days" [day]="day"></ta-itinerary-day>
   </div>

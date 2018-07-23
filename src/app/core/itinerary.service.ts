@@ -20,7 +20,6 @@ export interface DayDetails extends Day {
 })
 export class ItineraryService {
   private days: Observable<DayDetails[]>;
-  private _days: Partial<DayDetails[]> = [];
 
   get itinerary(): Observable<Day[]> {
     return this.days.pipe(

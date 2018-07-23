@@ -7,15 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./itinerary.component.scss']
 })
 export class ItineraryComponent implements OnInit {
-  days: Day[];
+  days: Observable<Day[]>;
 
   constructor(private itineraryService: ItineraryService) { }
 
   ngOnInit() {
-    this.getItinerary();
-  }
-
-  getItinerary() {
-    this.itineraryService.itinerary.subscribe(days => this.days = days);
+    this.days = this.itineraryService.itinerary;
   }
 }
