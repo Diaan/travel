@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "ta",
       "schematics": {},
       "architect": {
         "build": {
@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -123,5 +123,14 @@
       }
     }
   },
-  "defaultProject": "travel-app"
+  "defaultProject": "travel-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "ta",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "ta"
+    }
+  }
 }

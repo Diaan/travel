@@ -1,0 +1,14 @@
+<ng-container *ngIf="days | async as days; else noGroups">
+  <div class="itinerary">
+    <ta-itinerary-day *ngFor="let day of days" [day]="day"></ta-itinerary-day>
+  </div>
+</ng-container>
+<ng-template #noGroups>
+  <div class="loading-message">
+    loading itinerary...
+  </div>
+</ng-template>
+
+<!-- <span>
+  Photo by <a href="https://unsplash.com/photos/Xq1ntWruZQI?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Daniel Tseng</a> on <a href="/search/photos/japan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+</span> -->
