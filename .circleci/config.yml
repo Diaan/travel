@@ -4,77 +4,78 @@
 #
 version: 2
 jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.11-browsers
+    build:
+        docker:
+          # specify the version you desire here
+          - image: circleci/node:8.11-browsers
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+          # Specify service dependencies here if necessary
+          # CircleCI maintains a library of pre-built images
+          # documented at https://circleci.com/docs/2.0/circleci-images/
+          # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo
+        working_directory: ~/repo
 
-    steps:
-      - checkout
+        steps:
+          - checkout
 
-      # Log the current branch
-      - run:
-          name: Show current branch
-          command: echo ${CIRCLE_BRANCH}
+          # Log the current branch
+          - run:
+              name: Show current branch
+              command: echo ${CIRCLE_BRANCH}
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          # Download and cache dependencies
+          - restore_cache:
+              keys:
+              - v1-dependencies-{{ checksum "package.json" }}
+              # fallback to using the latest cache if no exact match is found
+              - v1-dependencies-
 
-      - run: yarn install
+          - run: yarn install
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          - save_cache:
+              paths:
+                - node_modules
+              key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
-      - run:
-          name: Unittests
-          command: yarn test --watch=false
+          # run tests!
+          - run:
+              name: Unittests
+              command: yarn test --watch=false
 
-       # Build project with different configuration based on
-      # the current branch
-      - run:
-          name: Building
-          command: yarn run build --prod
-      # Cache the dist folder for the deploy job
-      - save_cache:
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-              - dist
+          # Build project with different configuration based on
+          # the current branch
+          - run:
+              name: Building
+              command: yarn run build --prod
+          # Cache the dist folder for the deploy job
+          - save_cache:
+              key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+              paths:
+                  - dist
 
-  deploy:
-    docker:
-      - image: circleci/node:8.11-browsers
-      steps:
-            # Log the current branch
-            - run:
-                name: Show current branch
-                command: echo ${CIRCLE_BRANCH}
-            # Restore cache from the build job which contains the
-            # dist folder that needs to be deployed
-            - restore_cache:
-                key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+    deploy:
+        docker:
+          - image: circleci/node:8.11-browsers
 
-            - run:
-                name: Deploy to Firebase
-                command: firebase deploy --token "$FIREBASE_TOKEN"
+        steps:
+          # Log the current branch
+          - run:
+              name: Show current branch
+              command: echo ${CIRCLE_BRANCH}
+          # Restore cache from the build job which contains the
+          # dist folder that needs to be deployed
+          - restore_cache:
+              key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+
+          - run:
+              name: Deploy to Firebase
+              command: firebase deploy --token "$FIREBASE_TOKEN"
 
 workflows:
     version: 2
     # The build and deploy workflow
-    build_and_test:
+    build:
       jobs:
         - build
 
