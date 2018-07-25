@@ -68,11 +68,11 @@ jobs:
           - restore_cache:
               key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
 
-          - run: npm install firebase-tools
+          - run: npm install firebase-tools -g
 
           - run:
               name: Deploy to Firebase
-              command: ln -s ./node_modules/.bin/firebase . && \./firebase deploy --token "$FIREBASE_TOKEN"
+              command: firebase deploy --token "$FIREBASE_TOKEN"
 
 workflows:
     version: 2
