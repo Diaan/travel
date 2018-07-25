@@ -76,7 +76,7 @@ workflows:
     # The build and deploy workflow
     build_and_test:
       jobs:
-        -build
+        - build
 
     build_and_deploy:
         jobs:
