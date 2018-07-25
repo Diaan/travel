@@ -39,15 +39,54 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test --watch=false
+      - run:
+          name: Unittests
+          command: yarn test --watch=false
 
        # Build project with different configuration based on
       # the current branch
       - run:
           name: Building
-          command: yarn run build
+          command: yarn run build --prod
       # Cache the dist folder for the deploy job
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
               - dist
+
+  deploy:
+    docker:
+      - image: circleci/node:8.11-browsers
+      steps:
+            # Log the current branch
+            - run:
+                name: Show current branch
+                command: echo ${CIRCLE_BRANCH}
+            # Restore cache from the build job which contains the
+            # dist folder that needs to be deployed
+            - restore_cache:
+                key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+
+            - run:
+                name: Deploy to Firebase
+                command: firebase deploy --token "$FIREBASE_TOKEN"
+
+workflows:
+    version: 2
+    # The build and deploy workflow
+    build_and_test:
+      jobs:
+        -build
+
+    build_and_deploy:
+        jobs:
+            - build
+            # The deploy job will only run on the filtered branches and
+            # require the build job to be successful before it starts
+            - deploy:
+                requires:
+                    - build
+                filters:
+                    branches:
+                        only:
+                            - master
