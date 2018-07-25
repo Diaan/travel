@@ -54,13 +54,22 @@ jobs:
               paths:
                   - dist
 
-    deploy:
-        docker:
-          - image: circleci/node:8.11-browsers
+          - persist_to_workspace:
+              root: .
+              paths:
+                  - .
 
-        working_directory: ~/repo
+    deploy:
+        # docker:
+        #   - image: circleci/node:8.11-browsers
+
+        # working_directory: ~/repo
+
 
         steps:
+          - attach_workspace:
+              at: .
+
           # Log the current branch
           - run:
               name: Show current branch
@@ -79,8 +88,8 @@ jobs:
 
           # Restore cache from the build job which contains the
           # dist folder that needs to be deployed
-          - restore_cache:
-              key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          # - restore_cache:
+          #     key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
 
           - run:
               name: Deploy to Firebase
