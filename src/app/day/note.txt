@@ -1,0 +1,1 @@
+map staat in git ignore, om de issues netjes gescheiden te houden
