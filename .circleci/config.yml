@@ -67,13 +67,15 @@ jobs:
               command: echo ${CIRCLE_BRANCH}
 
            # Download and cache dependencies
-          - restore_cache:
-              keys:
-              - v1-dependencies-{{ checksum "package.json" }}
-              # fallback to using the latest cache if no exact match is found
-              - v1-dependencies-
+          # - restore_cache:
+          #     keys:
+          #     - v1-dependencies-{{ checksum "package.json" }}
+          #     # fallback to using the latest cache if no exact match is found
+          #     - v1-dependencies-
 
-          - run: yarn install
+          # - run: yarn install
+
+          - run: alias firebase="`npm config get prefix`/bin/firebase"
 
           # Restore cache from the build job which contains the
           # dist folder that needs to be deployed
