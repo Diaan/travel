@@ -1,6 +1,7 @@
 :host{
   -webkit-overflow-scrolling: touch;
   background: url("/assets/images/daniel-tseng-252379-unsplash.jpg") center center;
+  background-attachment: scroll;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -8,7 +9,6 @@
   max-height: 640px;
   max-width: 440px;
   overflow: hidden;
-  padding: 16px;
   width: 100vw;
 }
 
@@ -21,6 +21,7 @@
 
 .itinerary {
   overflow: auto;
+  padding: 16px;
 }
 
 ta-itinerary-day + ta-itinerary-day{
