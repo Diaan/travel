@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800,900');
 
+html,
+body {
+  position: fixed;
+  overflow: hidden;
+}
+
 body {
   font-family: 'Montserrat', Helvetica, sans-serif;
   padding: 0;
@@ -8,5 +14,5 @@ body {
 
 * {
   box-sizing: border-box;
-  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
