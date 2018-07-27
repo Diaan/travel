@@ -1,0 +1,16 @@
+<ul>
+  <li>beschrijving</li>
+  <li>plaatsen</li>
+  <li>foto's</li>
+</ul>
+<div *ngIf="day | async as day">
+  <div class="date">
+    {{day.date| date : 'EEEE d MMMM'}}
+  </div>
+  <div class="location">
+    {{day.start}}
+    <ng-container *ngIf="day.start !== day.end"> - {{day.end}}</ng-container>
+    {{day.description}}
+  </div>
+</div>
+<ta-day-navigation></ta-day-navigation>

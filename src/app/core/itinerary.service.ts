@@ -38,6 +38,13 @@ export class ItineraryService {
     this.days = this.query();
   }
 
+  day(number): Observable<DayDetails> {
+    return this.days.pipe(
+      flatMap(days => days),
+      filter(day => day.day === number)
+    );
+  }
+
   private query(): Observable<any[]> {
     return this.db.list('flamelink/environments/production/content/schemaDemo/en-US').valueChanges();
   }
