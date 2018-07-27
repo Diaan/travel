@@ -34,9 +34,9 @@ jobs:
               key: v1-dependencies-{{ checksum "package.json" }}
 
           # run tests!
-          - run:
-              name: Unittests
-              command: yarn test --watch=false
+          # - run:
+          #     name: Unittests
+          #     command: yarn test --watch=false
 
           # Build project with different configuration based on
           # the current branch
