@@ -1,3 +1,11 @@
-<p>
-  day-description works!
-</p>
+<ng-container *ngIf="day | async as day">
+  <div class="date">
+    {{day.date| date : 'EEEE d MMMM'}}
+  </div>
+  <div class="location">
+    {{(day.start | cityName) | async}}
+    <ng-container *ngIf="day.start !== day.end"> - {{(day.end | cityName) | async}}</ng-container>
+
+  </div>
+  <div [innerHTML]="day.description"></div>
+</ng-container>

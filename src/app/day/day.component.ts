@@ -20,5 +20,4 @@ export class DayComponent implements OnInit {
       this.day = this.itinerary.day(this.dayNumber);
     });
   }
-
 }
