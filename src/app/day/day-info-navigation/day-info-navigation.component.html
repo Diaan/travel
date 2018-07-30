@@ -1,5 +1,14 @@
 <ul>
-  <li [routerLink]="['/day',currentDay,'description']">beschrijving</li>
-  <li [routerLink]="['/day',currentDay,'places']">plaatsen</li>
-  <li [routerLink]="['/day',currentDay,'photos']">foto's</li>
+  <li [routerLink]="['/day',currentDay,'description']"
+      [class.active]="tab==='description'">
+    beschrijving
+  </li>
+  <li [routerLink]="['/day',currentDay,'places']"
+      [class.active]="tab==='places'">
+    plaatsen
+  </li>
+  <li [routerLink]="['/day',currentDay,'photos']"
+      [class.active]="tab==='photos'">
+    foto's
+  </li>
 </ul>

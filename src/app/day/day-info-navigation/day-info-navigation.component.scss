@@ -14,10 +14,25 @@ ul {
   padding: 0;
   justify-content: space-between;
 }
-li{
+
+li {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   font: $text-small;
+  position: relative;
+  z-index: 1;
+
+  &.active::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    display: block;
+    transform: rotate(45deg);
+    background-color: #fff;
+    z-index: -1;
+    bottom: -8px;
+  }
 }

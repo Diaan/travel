@@ -16,3 +16,17 @@ body {
 * {
   box-sizing: border-box;
 }
+
+article {
+  p {
+    margin: 0;
+  }
+
+  p + p {
+    margin-top: 16px;
+  }
+}
+
+*:focus{
+  outline: none;
+}

@@ -1,11 +1,12 @@
 <ng-container *ngIf="day | async as day">
-  <div class="date">
-    {{day.date| date : 'EEEE d MMMM'}}
-  </div>
-  <div class="location">
-    {{(day.start | cityName) | async}}
-    <ng-container *ngIf="day.start !== day.end"> - {{(day.end | cityName) | async}}</ng-container>
-
-  </div>
-  <div [innerHTML]="day.description"></div>
+  <header>
+    <div class="ta-location">
+      {{(day.start | cityName) | async}}
+      <ng-container *ngIf="day.start !== day.end"> - {{(day.end | cityName) | async}}</ng-container>
+    </div>
+    <div class="ta-date">
+      {{day.date| date : 'EEEE d MMMM'}}
+    </div>
+  </header>
+  <article [innerHTML]="day.description"></article>
 </ng-container>

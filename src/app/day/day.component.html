@@ -1,4 +1,5 @@
-<ta-day-info-navigation [currentDay]="dayNumber"></ta-day-info-navigation>
+<ta-day-info-navigation [currentDay]="dayNumber"
+                        [tab]="tab"></ta-day-info-navigation>
 
 <ng-container [ngSwitch]="tab">
   <ta-day-description *ngSwitchCase="'description'" [day]="day"></ta-day-description>
