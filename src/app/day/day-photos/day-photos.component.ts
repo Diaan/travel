@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Day } from './../../core/itinerary.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'ta-day-photos',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DayPhotosComponent implements OnInit {
 
+  @Input() day: Day;
   constructor() { }
 
   ngOnInit() {

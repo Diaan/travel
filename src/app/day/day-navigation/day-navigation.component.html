@@ -8,7 +8,9 @@
     <circle cx="3" cy="3" r="3" transform="translate(0 9)"/>
   </svg>
 </a>
-{{currentDay}}
+
 <ta-day-number *ngFor="let day of (navigationDays | async)"
                [number]="day"
-               [routerLink]="['/day',day]"></ta-day-number>
+               [routerLink]="['/day',day]"
+               [class.medium]="day===currentDay"
+               [class.small]="day!==currentDay"></ta-day-number>

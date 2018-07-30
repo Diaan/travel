@@ -1,3 +1,9 @@
-<ta-day-info-navigation></ta-day-info-navigation>
-<ta-day-description [day]="day"></ta-day-description>
+<ta-day-info-navigation [currentDay]="dayNumber"></ta-day-info-navigation>
+
+<ng-container [ngSwitch]="tab">
+  <ta-day-description *ngSwitchCase="'description'" [day]="day"></ta-day-description>
+  <ta-day-places *ngSwitchCase="'places'" [day]="day"></ta-day-places>
+  <ta-day-photos *ngSwitchCase="'photos'" [day]="day"></ta-day-photos>
+</ng-container>
+
 <ta-day-navigation [currentDay]="dayNumber"></ta-day-navigation>

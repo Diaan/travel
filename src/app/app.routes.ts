@@ -5,5 +5,6 @@ import { DayComponent } from './day/day.component';
 
 export const AppRoutes: Routes = [
   {path: '', component: ItineraryComponent},
-  {path: 'day/:dayNumber', component: DayComponent}
+  {path: 'day/:dayNumber', component: DayComponent},
+  {path: 'day/:dayNumber/:tab', component: DayComponent}
 ];
