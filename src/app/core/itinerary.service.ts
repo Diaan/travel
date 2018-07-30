@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
-import { tap, map, filter, flatMap } from 'rxjs/operators';
+import { tap, map, filter, flatMap, take, pluck } from 'rxjs/operators';
 
 export interface Day {
   id: string;
@@ -34,8 +34,21 @@ export class ItineraryService {
     );
   }
 
+  get navigationDays(): Observable<number[]> {
+    return this.days.pipe<number[]>(
+      map( days => days.map(day => day.day))
+    );
+  }
+
   constructor(private db: AngularFireDatabase) {
     this.days = this.query();
+  }
+
+  day(number): Observable<DayDetails> {
+    return this.days.pipe(
+      flatMap(days => days),
+      filter(day => day.day === number)
+    );
   }
 
   private query(): Observable<any[]> {

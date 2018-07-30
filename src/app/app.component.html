@@ -1,5 +1,5 @@
 <ng-container *ngIf="cities | async; else noGroups">
-  <ta-itinerary></ta-itinerary>
+  <router-outlet></router-outlet>
 </ng-container>
 <ng-template #noGroups>
   loading cities...

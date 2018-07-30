@@ -1,0 +1,44 @@
+@import "variables";
+
+:host {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 0 16px;
+  display: flex;
+  align-items:  stretch;
+  flex-direction: column;
+}
+
+header {
+  color: #fff;
+  flex: 0 0 auto;
+  padding: 16px 0;
+  text-align: center;
+
+  .ta-location {
+    font: $heading-big;
+    padding: 8px 0;
+    text-transform: uppercase;
+  }
+
+  .ta-date {
+    font: $text-small;
+    line-height: 16px;
+  }
+}
+
+article {
+  -webkit-overflow-scrolling: touch;
+  background-color: #fff;
+  flex: 1 1 auto;
+  padding: 16px;
+  overflow: auto;
+
+  p {
+    margin: 0;
+  }
+
+  p + p {
+    margin-top: 16px;
+  }
+}

@@ -1,6 +1,6 @@
 <ng-container *ngIf="days | async as days; else noGroups">
   <div class="itinerary">
-    <ta-itinerary-day *ngFor="let day of days" [day]="day"></ta-itinerary-day>
+    <ta-itinerary-day *ngFor="let day of days" [day]="day" [routerLink]="['/day',day.day]"></ta-itinerary-day>
   </div>
 </ng-container>
 <ng-template #noGroups>
