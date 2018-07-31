@@ -8,12 +8,12 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   declarations: [
-    DayNumberComponent,
-    CityNamePipe
+    CityNamePipe,
+    DayNumberComponent
   ],
   exports: [
-    DayNumberComponent,
-    CityNamePipe
+    CityNamePipe,
+    DayNumberComponent
   ]
 })
 export class SharedModule { }
