@@ -10,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   cities: Observable<City[]>;
 
-  constructor (private destinationService: DestinationService) {}
+  constructor (
+    private destinationService: DestinationService
+  ) {}
 
   ngOnInit() {
     this.cities = this.destinationService.cities;

@@ -1,3 +1,5 @@
+import { BackgroundImageService } from './../core/background-image.service';
+import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ItineraryService, DayDetails } from './../core/itinerary.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,14 +15,21 @@ export class DayComponent implements OnInit {
   tab: string;
   dayNumber: number;
 
-  constructor(private itinerary: ItineraryService, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private itinerary: ItineraryService,
+    private activatedRoute: ActivatedRoute,
+    private background: BackgroundImageService
+  ) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((route: ParamMap) => {
       // tslint:disable-next-line:radix
       this.dayNumber = parseInt(route.get('dayNumber'));
       this.tab = route.get('tab') || 'description';
-      this.day = this.itinerary.day(this.dayNumber);
+      this.day = this.itinerary.day(this.dayNumber).pipe(
+        tap(day => {
+        this.background.setBackgroundByDestination(day.start);
+      }));
     });
   }
 }

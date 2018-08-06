@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     BrowserModule,
