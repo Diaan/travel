@@ -1,3 +1,4 @@
+import { BackgroundImageService } from './../core/background-image.service';
 import { Observable } from 'rxjs';
 import { ItineraryService, Day } from '../core/itinerary.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class ItineraryComponent implements OnInit {
   days: Observable<Day[]>;
 
-  constructor(private itineraryService: ItineraryService) { }
+  constructor(
+    private itineraryService: ItineraryService,
+    private background: BackgroundImageService
+  ) { }
 
   ngOnInit() {
     this.days = this.itineraryService.itinerary;
+    this.background.setBackground(1532266037782);
   }
 }

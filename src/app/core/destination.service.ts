@@ -10,6 +10,7 @@ export interface City {
 
 export interface Destination extends City {
   highlights: any[];
+  image?: string[];
 }
 
 @Injectable({
@@ -36,7 +37,7 @@ export class DestinationService {
   destinationDetails(id): Observable<Destination> {
     return this.destinations.pipe(
       flatMap(destinations => destinations),
-      filter(destination => destination.id === id) // destination.id === id)
+      filter(destination => destination.id === id)
     );
   }
 

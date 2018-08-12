@@ -1,5 +1,4 @@
 :host {
-  background-color: darkslategray;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -7,4 +6,7 @@
   max-width: 440px;
   overflow: hidden;
   width: 100vw;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%) no-repeat;
+  background-size: 100% 160px;
 }
