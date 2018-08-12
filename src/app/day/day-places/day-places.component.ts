@@ -1,4 +1,7 @@
-import { Day } from './../../core/itinerary.service';
+import { switchMap, tap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { DestinationService, Highlight } from './../../core/destination.service';
+import { DayDetails } from './../../core/itinerary.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,12 +10,19 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./day-places.component.scss']
 })
 export class DayPlacesComponent implements OnInit {
+  places: Observable<Highlight[]>;
 
-  @Input() day: Day;
+  @Input() day: Observable<DayDetails>;
 
-  constructor() { }
+  constructor(
+    private destinationService: DestinationService
+  ) { }
 
   ngOnInit() {
+    // destinationDetails
+    this.places = this.day.pipe(
+      switchMap(day => this.destinationService.destinationDetails(day.placesFrom[0])),
+      map(destination => destination.highlights)
+    );
   }
-
 }

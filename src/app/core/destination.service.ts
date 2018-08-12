@@ -9,8 +9,19 @@ export interface City {
 }
 
 export interface Destination extends City {
-  highlights: any[];
   image?: string[];
+  highlights: Highlight[];
+}
+
+export interface Highlight {
+  location: {
+    address: string;
+    lat: number;
+    lng: number;
+  };
+  name: string;
+  type: string;
+
 }
 
 @Injectable({
