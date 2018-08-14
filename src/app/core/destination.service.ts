@@ -1,7 +1,8 @@
+import { Highlight } from './destination.service';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
-import { tap, map, filter, flatMap } from 'rxjs/operators';
+import { tap, map, filter, flatMap, reduce, concatMap, scan } from 'rxjs/operators';
 
 export interface City {
   id: string;
@@ -29,7 +30,6 @@ export interface Highlight {
 })
 export class DestinationService {
   private destinations: Observable<Destination[]>;
-  private _destinations: Partial<Destination[]> = [];
 
   constructor(private db: AngularFireDatabase) {
     this.destinations = this.query();
@@ -45,14 +45,14 @@ export class DestinationService {
     );
   }
 
-  destinationDetails(id): Observable<Destination> {
+  destinationDetails(id: string): Observable<Destination> {
     return this.destinations.pipe(
       flatMap(destinations => destinations),
       filter(destination => destination.id === id)
     );
   }
 
-  destinationName(id): Observable<string> {
+  destinationName(id: string): Observable<string> {
     return this.destinations.pipe(
       flatMap(destinations => destinations),
       filter(destination => destination.id === id),
@@ -60,7 +60,16 @@ export class DestinationService {
     );
   }
 
-  private query(): Observable<any[]> {
-    return this.db.list('flamelink/environments/production/content/destinations/en-US').valueChanges();
+  highlights(ids: string[]): Observable<Highlight[]> {
+    return this.destinations.pipe(
+      flatMap(destinations => destinations),
+      filter(destination => !!destination.highlights && ids.includes(destination.id)),
+      map(destination => destination.highlights),
+      scan((a, b) => a.concat(b), [])
+    );
+  }
+
+  private query(): Observable<Destination[]> {
+    return this.db.list<Destination>('flamelink/environments/production/content/destinations/en-US').valueChanges();
   }
 }

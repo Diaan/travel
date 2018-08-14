@@ -1,4 +1,4 @@
-import { switchMap, tap, map } from 'rxjs/operators';
+import { switchMap, tap, map, flatMap, concatMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { DestinationService, Highlight } from './../../core/destination.service';
 import { DayDetails } from './../../core/itinerary.service';
@@ -19,10 +19,8 @@ export class DayPlacesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // destinationDetails
     this.places = this.day.pipe(
-      switchMap(day => this.destinationService.destinationDetails(day.placesFrom[0])),
-      map(destination => destination.highlights)
+      switchMap(day => this.destinationService.highlights(day.placesFrom))
     );
   }
 }

@@ -1,0 +1,19 @@
+@import "variables";
+
+:host{
+  color: #fff;
+  flex: 0 0 auto;
+  padding: 16px 0;
+  text-align: center;
+
+  .ta-location {
+    font: $heading-big;
+    padding: 8px 0;
+    text-transform: uppercase;
+  }
+
+  .ta-date {
+    font: $text-small;
+    line-height: 16px;
+  }
+}

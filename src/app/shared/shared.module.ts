@@ -2,6 +2,7 @@ import { CityNamePipe } from './city-name.pipe';
 import { DayNumberComponent } from './day-number/day-number.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DayHeaderComponent } from './day-header/day-header.component';
 
 @NgModule({
   imports: [
@@ -9,11 +10,13 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: [
     CityNamePipe,
-    DayNumberComponent
+    DayNumberComponent,
+    DayHeaderComponent
   ],
   exports: [
     CityNamePipe,
-    DayNumberComponent
+    DayNumberComponent,
+    DayHeaderComponent
   ]
 })
 export class SharedModule { }

@@ -1,7 +1,11 @@
 :host{
-  align-items: center;
   display: flex;
+  flex-direction: column;
   height: 100%;
-  justify-content: center;
+  max-height: 640px;
+  max-width: 440px;
+  overflow: hidden;
+  position: relative;
   width: 100vw;
+  z-index: 1;
 }

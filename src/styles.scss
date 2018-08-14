@@ -8,9 +8,14 @@ body {
 }
 
 body {
+  align-items: center;
+  display: flex;
   font: $text-copy;
-  padding: 0;
+  height: 100%;
+  justify-content: center;
   margin: 0;
+  padding: 0;
+  width: 100vw;
 }
 
 * {
