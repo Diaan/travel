@@ -11,6 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DayPlacesComponent implements OnInit {
   places: Observable<Highlight[]>;
+  activePlace: Highlight;
 
   @Input() day: Observable<DayDetails>;
 
@@ -22,5 +23,13 @@ export class DayPlacesComponent implements OnInit {
     this.places = this.day.pipe(
       switchMap(day => this.destinationService.highlights(day.placesFrom))
     );
+  }
+
+  toggleActive(place) {
+    if (this.activePlace === place) {
+      this.activePlace = null;
+    } else {
+      this.activePlace = place;
+    }
   }
 }

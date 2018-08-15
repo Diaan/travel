@@ -1,3 +1,9 @@
-<ul *ngIf="places | async as places">
-  <li *ngFor="let place of places">{{place.name}}</li>
-</ul>
+<dl *ngIf="places | async as places">
+  <ng-container *ngFor="let place of places">
+    <dt (click)="toggleActive(place)" [class.active]="activePlace===place">
+      <ta-place-icon [category]="place.type"></ta-place-icon>
+      <span>{{place.name}}</span>
+    </dt>
+    <dd>{{place.location.address}}</dd>
+  </ng-container>
+</dl>

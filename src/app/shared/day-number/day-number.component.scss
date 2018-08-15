@@ -1,3 +1,5 @@
+@import "variables";
+
 :host{
   align-items: center;
   background-color: #fff;
@@ -10,7 +12,7 @@
   width: 48px;
 
   &.inactive{
-    background-color: gray;
+    background-color: $semitransparent-light;
   }
 
   &.dark{

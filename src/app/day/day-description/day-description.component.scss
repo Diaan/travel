@@ -11,7 +11,7 @@
 
 article {
   -webkit-overflow-scrolling: touch;
-  background-color: rgba(255,255,255,0.85);
+  background-color: $semitransparent-light;
   flex: 1 1 auto;
   padding: 16px;
   overflow: auto;
