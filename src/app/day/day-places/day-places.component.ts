@@ -1,8 +1,8 @@
-import { switchMap, tap, map, flatMap, concatMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { DestinationService, Highlight } from './../../core/destination.service';
-import { DayDetails } from './../../core/itinerary.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { switchMap, tap, flatMap, map, distinct, scan } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { DestinationService, Highlight } from '@core/destination.service';
+import { DayDetails } from '@core/itinerary.service';
 
 @Component({
   selector: 'ta-day-places',
@@ -10,8 +10,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./day-places.component.scss']
 })
 export class DayPlacesComponent implements OnInit {
-  places: Observable<Highlight[]>;
   activePlace: Highlight;
+  places: Observable<Highlight[]>;
+  types: Observable<string[]>;
 
   @Input() day: Observable<DayDetails>;
 
@@ -22,6 +23,14 @@ export class DayPlacesComponent implements OnInit {
   ngOnInit() {
     this.places = this.day.pipe(
       switchMap(day => this.destinationService.highlights(day.placesFrom))
+    );
+
+    this.types = this.places.pipe(
+      flatMap(p => p),
+      distinct(function (p) { return p.type; }),
+      map(p => p.type),
+      tap(p => console.log(p)),
+      scan((a, b) => a.concat(b), [])
     );
   }
 

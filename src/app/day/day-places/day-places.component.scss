@@ -1,13 +1,29 @@
 @import "variables";
 
 :host {
+  display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
   padding: 0 16px;
-  overflow: auto;
+}
+
+div {
+  flex: 0 0 auto;
+  margin-bottom: 8px;
+
+  ta-place-icon {
+    display: inline-flex;
+
+  }
+  ta-place-icon + ta-place-icon {
+    margin-left: 8px;
+  }
 }
 
 dl {
+  flex: 1 1 auto;
   margin: 0;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 

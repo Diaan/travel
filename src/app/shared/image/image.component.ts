@@ -1,6 +1,6 @@
-import { Observable, Subject } from 'rxjs';
-import { BackgroundImageService } from './../../core/background-image.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BackgroundImageService } from '@core/background-image.service';
 
 export interface BackgroundImage {
   id?: number;

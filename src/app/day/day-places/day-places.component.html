@@ -1,3 +1,6 @@
+<div *ngIf="types | async as types">
+  <ta-place-icon *ngFor="let type of types" [category]="type"></ta-place-icon>
+</div>
 <dl *ngIf="places | async as places">
   <ng-container *ngFor="let place of places">
     <dt (click)="toggleActive(place)" [class.active]="activePlace===place">

@@ -1,5 +1,5 @@
-import { Day } from './../../core/itinerary.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { Day } from '@core/itinerary.service';
 
 @Component({
   selector: 'ta-day-photos',

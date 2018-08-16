@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { DayDetails } from './../../core/itinerary.service';
+import { DayDetails } from '@core/itinerary.service';
 import { Component, Input } from '@angular/core';
 
 @Component({

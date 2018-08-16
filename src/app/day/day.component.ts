@@ -1,9 +1,9 @@
-import { BackgroundImageService } from './../core/background-image.service';
-import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { ItineraryService, DayDetails } from './../core/itinerary.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { ItineraryService, DayDetails } from '@core/itinerary.service';
+import { BackgroundImageService } from '@core/background-image.service';
 
 @Component({
   selector: 'ta-day',
