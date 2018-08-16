@@ -37,3 +37,42 @@ dd {
 dt.active + dd {
   display: block;
 }
+
+a.button {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  margin-top: 8px;
+  text-decoration: none;
+
+  .hotel &{
+    background-color: $cat_color_1;
+  }
+
+  .museum &{
+    background-color: $cat_color_2;
+  }
+
+  .temple &{
+    background-color: $cat_color_3;
+  }
+
+  .restaurant &{
+    background-color: $cat_color_4;
+  }
+
+  .shop &{
+    background-color: $cat_color_5;
+  }
+
+  .garden &{
+    background-color: $cat_color_6;
+  }
+
+  .landmark &{
+    background-color: $cat_color_7;
+  }
+}
+

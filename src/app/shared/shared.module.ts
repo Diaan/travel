@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DayHeaderComponent } from './day-header/day-header.component';
 import { PlaceIconComponent } from './place-icon/place-icon.component';
+import { MapsUrlPipe } from './maps-url.pipe';
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import { PlaceIconComponent } from './place-icon/place-icon.component';
     CityNamePipe,
     DayNumberComponent,
     DayHeaderComponent,
-    PlaceIconComponent
+    PlaceIconComponent,
+    MapsUrlPipe
   ],
   exports: [
     CityNamePipe,
     DayNumberComponent,
     DayHeaderComponent,
+    MapsUrlPipe,
     PlaceIconComponent
   ]
 })

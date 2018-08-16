@@ -4,6 +4,9 @@
       <ta-place-icon [category]="place.type"></ta-place-icon>
       <span>{{place.name}}</span>
     </dt>
-    <dd>{{place.location.address}}</dd>
+    <dd [class]="place.type">
+      {{place.location.address}}
+      <a [attr.href]="place.location | mapsUrl" class="button" target="_blank">Open in Google maps</a>
+    </dd>
   </ng-container>
 </dl>

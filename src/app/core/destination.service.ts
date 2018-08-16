@@ -15,14 +15,16 @@ export interface Destination extends City {
 }
 
 export interface Highlight {
-  location: {
-    address: string;
-    lat: number;
-    lng: number;
-  };
+  location: HighlightLocation;
   name: string;
   type: string;
 
+}
+
+export interface HighlightLocation {
+  address: string;
+  lat: number;
+  lng: number;
 }
 
 @Injectable({
