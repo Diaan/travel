@@ -1,4 +1,78 @@
+@import "variables";
+
 :host {
   flex: 1 1 auto;
+  padding: 0 16px;
   overflow: auto;
 }
+
+dl {
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+dt {
+  background-color: $semitransparent-light;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+
+  ta-place-icon {
+    flex: 0 0 32px;
+    margin-right: 8px;
+  }
+}
+
+* + dt {
+  margin-top: 8px;
+}
+
+dd {
+  background-color: $semitransparent-light;
+  display: none;
+  margin: 0;
+  padding: 0 8px 8px 48px;
+}
+
+dt.active + dd {
+  display: block;
+}
+
+a.button {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  margin-top: 8px;
+  text-decoration: none;
+
+  .hotel &{
+    background-color: $cat_color_1;
+  }
+
+  .museum &{
+    background-color: $cat_color_2;
+  }
+
+  .temple &{
+    background-color: $cat_color_3;
+  }
+
+  .restaurant &{
+    background-color: $cat_color_4;
+  }
+
+  .shop &{
+    background-color: $cat_color_5;
+  }
+
+  .garden &{
+    background-color: $cat_color_6;
+  }
+
+  .landmark &{
+    background-color: $cat_color_7;
+  }
+}
+

@@ -1,3 +1,12 @@
-<p>
-  day-places works!
-</p>
+<dl *ngIf="places | async as places">
+  <ng-container *ngFor="let place of places">
+    <dt (click)="toggleActive(place)" [class.active]="activePlace===place">
+      <ta-place-icon [category]="place.type"></ta-place-icon>
+      <span>{{place.name}}</span>
+    </dt>
+    <dd [class]="place.type">
+      {{place.location.address}}
+      <a [attr.href]="place.location | mapsUrl" class="button" target="_blank">Open in Google maps</a>
+    </dd>
+  </ng-container>
+</dl>

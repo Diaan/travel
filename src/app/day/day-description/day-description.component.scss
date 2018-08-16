@@ -9,27 +9,9 @@
   flex-direction: column;
 }
 
-header {
-  color: #fff;
-  flex: 0 0 auto;
-  padding: 16px 0;
-  text-align: center;
-
-  .ta-location {
-    font: $heading-big;
-    padding: 8px 0;
-    text-transform: uppercase;
-  }
-
-  .ta-date {
-    font: $text-small;
-    line-height: 16px;
-  }
-}
-
 article {
   -webkit-overflow-scrolling: touch;
-  background-color: rgba(255,255,255,0.85);
+  background-color: $semitransparent-light;
   flex: 1 1 auto;
   padding: 16px;
   overflow: auto;

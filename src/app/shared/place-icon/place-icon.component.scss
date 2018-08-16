@@ -1,0 +1,44 @@
+@import "variables";
+
+:host {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content:center;
+  height: 32px;
+  width: 32px;
+
+  &.hotel{
+    background-color: $cat_color_1;
+  }
+
+  &.museum{
+    background-color: $cat_color_2;
+  }
+
+  &.temple{
+    background-color: $cat_color_3;
+  }
+
+  &.restaurant{
+    background-color: $cat_color_4;
+  }
+
+  &.shop{
+    background-color: $cat_color_5;
+  }
+
+  &.garden{
+    background-color: $cat_color_6;
+  }
+
+  &.landmark{
+    background-color: $cat_color_7;
+  }
+}
+
+svg {
+  height: 16px;
+  width: 16px;
+}

@@ -1,25 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DayPlacesComponent } from './day-places.component';
+import { PlaceIconComponent } from './place-icon.component';
 
-describe('DayPlacesComponent', () => {
-  let component: DayPlacesComponent;
-  let fixture: ComponentFixture<DayPlacesComponent>;
+describe('PlaceIconComponent', () => {
+  let component: PlaceIconComponent;
+  let fixture: ComponentFixture<PlaceIconComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DayPlacesComponent ]
+      declarations: [ PlaceIconComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DayPlacesComponent);
+    fixture = TestBed.createComponent(PlaceIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

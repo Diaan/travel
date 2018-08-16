@@ -13,6 +13,7 @@ export interface Day {
 
 export interface DayDetails extends Day {
   description: string;
+  placesFrom: string[];
 }
 
 @Injectable({
