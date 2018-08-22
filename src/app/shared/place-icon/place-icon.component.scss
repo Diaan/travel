@@ -36,6 +36,11 @@
   &.landmark{
     background-color: $cat_color_7;
   }
+
+  &.big{
+    height: 40px;
+    width: 40px;
+  }
 }
 
 svg {

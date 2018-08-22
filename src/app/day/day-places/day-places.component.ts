@@ -13,6 +13,7 @@ export class DayPlacesComponent implements OnInit {
   activePlace: Highlight;
   places: Observable<Highlight[]>;
   types: Observable<string[]>;
+  currentFilter: string;
 
   @Input() day: Observable<DayDetails>;
 
@@ -29,7 +30,6 @@ export class DayPlacesComponent implements OnInit {
       flatMap(p => p),
       distinct(function (p) { return p.type; }),
       map(p => p.type),
-      tap(p => console.log(p)),
       scan((a, b) => a.concat(b), [])
     );
   }
@@ -40,5 +40,14 @@ export class DayPlacesComponent implements OnInit {
     } else {
       this.activePlace = place;
     }
+  }
+
+  filter(type) {
+    if (this.currentFilter === type) {
+      this.currentFilter = null;
+    } else {
+      this.currentFilter = type;
+    }
+    console.log(type);
   }
 }
