@@ -1,8 +1,7 @@
 <div *ngIf="types | async as types">
   <ta-place-icon *ngFor="let type of types" [category]="type" [big]="true" (click)="filter(type)"></ta-place-icon>
 </div>
-{{currentFilter}}
-<dl *ngIf="places | async as places">
+<dl *ngIf="filteredPlaces | async as places">
   <ng-container *ngFor="let place of places">
     <dt (click)="toggleActive(place)" [class.active]="activePlace===place">
       <ta-place-icon [category]="place.type"></ta-place-icon>

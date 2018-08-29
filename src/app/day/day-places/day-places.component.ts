@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { switchMap, tap, flatMap, map, distinct, scan } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { switchMap, tap, flatMap, map, distinct, scan, startWith, mergeMap } from 'rxjs/operators';
+import { Observable, Subject, BehaviorSubject, combineLatest } from 'rxjs';
 import { DestinationService, Highlight } from '@core/destination.service';
 import { DayDetails } from '@core/itinerary.service';
 
@@ -11,9 +11,11 @@ import { DayDetails } from '@core/itinerary.service';
 })
 export class DayPlacesComponent implements OnInit {
   activePlace: Highlight;
+  currentFilter: string;
+  filterChange = new BehaviorSubject('');
+  filteredPlaces: Observable<Highlight[]>;
   places: Observable<Highlight[]>;
   types: Observable<string[]>;
-  currentFilter: string;
 
   @Input() day: Observable<DayDetails>;
 
@@ -32,6 +34,13 @@ export class DayPlacesComponent implements OnInit {
       map(p => p.type),
       scan((a, b) => a.concat(b), [])
     );
+
+    this.filteredPlaces = combineLatest(
+      this.filterChange,
+      this.places
+    ).pipe(
+      map(([type, places]) => places.filter(place => type === '' || place.type === type))
+    );
   }
 
   toggleActive(place) {
@@ -44,10 +53,10 @@ export class DayPlacesComponent implements OnInit {
 
   filter(type) {
     if (this.currentFilter === type) {
-      this.currentFilter = null;
+      this.currentFilter = '';
     } else {
       this.currentFilter = type;
     }
-    console.log(type);
+    this.filterChange.next(this.currentFilter);
   }
 }
