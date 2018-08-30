@@ -1,5 +1,9 @@
 <div *ngIf="types | async as types">
-  <ta-place-icon *ngFor="let type of types" [category]="type" [big]="true" (click)="filter(type)"></ta-place-icon>
+  <ta-place-icon *ngFor="let type of types"
+                 [class.active]="type===currentFilter"
+                 [category]="type"
+                 [big]="true"
+                 (click)="filter(type)"></ta-place-icon>
 </div>
 <dl *ngIf="filteredPlaces | async as places">
   <ng-container *ngFor="let place of places">
@@ -9,7 +13,8 @@
     </dt>
     <dd [class]="place.type">
       {{place.location.address}}
-      <a [attr.href]="place.location | mapsUrl" class="button" target="_blank">Open in Google maps</a>
+      <a [attr.href]="place.location | mapsUrl"
+         class="button" target="_blank">Open in Google maps</a>
     </dd>
   </ng-container>
 </dl>
