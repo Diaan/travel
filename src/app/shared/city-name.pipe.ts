@@ -1,5 +1,5 @@
-import { DestinationService } from './../core/destination.service';
 import { Pipe, PipeTransform } from '@angular/core';
+import { DestinationService } from '@core/destination.service';
 
 @Pipe({
   name: 'cityName'

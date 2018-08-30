@@ -1,12 +1,16 @@
+@import "variables";
+
 :host{
+  align-items: center;
+  color: #fff;
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-height: 640px;
-  max-width: 440px;
+  justify-content: center;
+  max-height: $max-height;
+  max-width: $max-width;
   overflow: hidden;
   position: relative;
   width: 100vw;
   z-index: 1;
-  background-color: #fff;
 }

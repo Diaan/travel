@@ -1,7 +1,7 @@
-import { BackgroundImageService } from './../core/background-image.service';
-import { Observable } from 'rxjs';
-import { ItineraryService, Day } from '../core/itinerary.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BackgroundImageService } from '@core/background-image.service';
+import { ItineraryService, Day } from '@core/itinerary.service';
 
 @Component({
   selector: 'ta-itinerary',

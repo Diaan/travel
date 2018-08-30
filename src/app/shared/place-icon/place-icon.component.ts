@@ -11,4 +11,6 @@ export class PlaceIconComponent {
   @HostBinding('class') get categoryName(): string {
     return this.category;
   }
+
+  @HostBinding('class.big') @Input() big: boolean;
 }

@@ -1,7 +1,7 @@
-import { tap, map, switchMap, startWith } from 'rxjs/operators';
-import { ItineraryService } from './../../core/itinerary.service';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { of, Observable, merge, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { map, switchMap, startWith } from 'rxjs/operators';
+import { ItineraryService } from '@core/itinerary.service';
 
 @Component({
   selector: 'ta-day-navigation',
