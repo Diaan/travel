@@ -1,8 +1,8 @@
 import { Highlight } from './destination.service';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs';
-import { tap, map, filter, flatMap, reduce, concatMap, scan } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, filter, flatMap, scan } from 'rxjs/operators';
 
 export interface City {
   id: string;
@@ -63,9 +63,12 @@ export class DestinationService {
   }
 
   highlights(ids: string[]): Observable<Highlight[]> {
+    if (!ids) {
+      return of([]);
+    }
     return this.destinations.pipe(
       flatMap(destinations => destinations),
-      filter(destination => !!destination.highlights && ids.includes(destination.id)),
+      filter(destination => ids.includes(destination.id)),
       map(destination => destination.highlights),
       scan((a, b) => a.concat(b), [])
     );

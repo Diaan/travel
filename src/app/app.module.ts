@@ -27,7 +27,7 @@ import { environment } from '../environments/environment';
     ItineraryModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  exports: [RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

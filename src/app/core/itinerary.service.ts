@@ -48,7 +48,8 @@ export class ItineraryService {
   day(number): Observable<DayDetails> {
     return this.days.pipe(
       flatMap(days => days),
-      filter(day => day.day === number)
+      filter(day => day.day === number),
+      take(1)
     );
   }
 
