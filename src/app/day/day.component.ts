@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { ItineraryService, DayDetails } from '@core/itinerary.service';
+import { ActivatedRoute } from '@angular/router';
+import { DayDetails } from '@core/itinerary.service';
 import { BackgroundImageService } from '@core/background-image.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ta-day',
@@ -11,25 +10,23 @@ import { BackgroundImageService } from '@core/background-image.service';
   styleUrls: ['./day.component.scss']
 })
 export class DayComponent implements OnInit {
-  day: Observable<DayDetails>;
+  day: DayDetails;
   tab: string;
   dayNumber: number;
 
   constructor(
-    private itinerary: ItineraryService,
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private background: BackgroundImageService
   ) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((route: ParamMap) => {
-      // tslint:disable-next-line:radix
-      this.dayNumber = parseInt(route.get('dayNumber'));
-      this.tab = route.get('tab') || 'description';
-      this.day = this.itinerary.day(this.dayNumber).pipe(
-        tap(day => {
-        this.background.setBackgroundByDestination(day.start);
-      }));
+    this.day = this.route.snapshot.data.day;
+    this.background.setBackgroundByDestination(this.day.start);
+
+    this.route.data.pipe(
+      map(({ day }) => day)
+    ).subscribe(day => {
+      this.background.setBackgroundByDestination(day.start);
     });
   }
 }

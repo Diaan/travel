@@ -11,6 +11,6 @@
 
 <ta-day-number *ngFor="let day of (navigationDays | async)"
                [number]="day"
-               [routerLink]="['/day',day]"
+               (click)="switchDay(day)"
                [class.medium]="day===currentDay"
                [class.small]="day!==currentDay"></ta-day-number>

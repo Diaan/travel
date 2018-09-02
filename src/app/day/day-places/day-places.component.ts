@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { switchMap, tap, flatMap, map, distinct, scan, startWith, mergeMap } from 'rxjs/operators';
-import { Observable, Subject, BehaviorSubject, combineLatest } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { switchMap, map } from 'rxjs/operators';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { DestinationService, Highlight } from '@core/destination.service';
 import { DayDetails } from '@core/itinerary.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ta-day-places',
@@ -15,31 +16,28 @@ export class DayPlacesComponent implements OnInit {
   filterChange = new BehaviorSubject('');
   filteredPlaces: Observable<Highlight[]>;
   places: Observable<Highlight[]>;
-  types: Observable<string[]>;
-
-  @Input() day: Observable<DayDetails>;
+  types = ['hotel', 'museum', 'temple', 'restaurant', 'shop', 'garden', 'landmark'];
+  day: Observable<DayDetails>;
 
   constructor(
+    private route: ActivatedRoute,
     private destinationService: DestinationService
   ) { }
 
   ngOnInit() {
-    this.places = this.day.pipe(
-      switchMap(day => this.destinationService.highlights(day.placesFrom))
+    this.day = this.route.parent.data.pipe(
+      map(({ day }) => day)
     );
 
-    this.types = this.places.pipe(
-      flatMap(p => p),
-      distinct(function (p) { return p.type; }),
-      map(p => p.type),
-      scan((a, b) => a.concat(b), [])
+    this.places = this.day.pipe(
+      switchMap(day => this.destinationService.highlights(day.placesFrom))
     );
 
     this.filteredPlaces = combineLatest(
       this.filterChange,
       this.places
     ).pipe(
-      map(([type, places]) => places.filter(place => type === '' || place.type === type))
+      map(([type, places]) => places.filter(place => !!place && (type === '' || place.type === type))),
     );
   }
 

@@ -1,24 +1,26 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { map, switchMap, startWith } from 'rxjs/operators';
 import { ItineraryService } from '@core/itinerary.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'ta-day-navigation',
   templateUrl: './day-navigation.component.html',
   styleUrls: ['./day-navigation.component.scss']
 })
-export class DayNavigationComponent implements OnInit, OnChanges {
+export class DayNavigationComponent implements OnInit {
   navigationDays: Observable<number[]>;
   dayChange = new Subject<number>();
 
   @Input() currentDay: number;
+  @Input() tab: string;
 
-  constructor(private itineraryService: ItineraryService) { }
-
-  ngOnChanges(changes) {
-    this.dayChange.next(changes.currentDay.currentValue);
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private itineraryService: ItineraryService
+  ) { }
 
   ngOnInit() {
     this.navigationDays = this.dayChange.pipe(
@@ -39,5 +41,17 @@ export class DayNavigationComponent implements OnInit, OnChanges {
         })
       ))
     );
+  }
+
+  switchDay(day) {
+    this.currentDay = day;
+    this.dayChange.next(day);
+    this.router.navigate(['../', day, this.getActiveTab()], { relativeTo: this.route });
+  }
+
+  private getActiveTab(): string {
+    return this.route.snapshot.firstChild &&
+           this.route.snapshot.firstChild.routeConfig &&
+           this.route.snapshot.firstChild.routeConfig.path;
   }
 }

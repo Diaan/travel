@@ -8,7 +8,9 @@
 }
 
 div {
+  display: flex;
   flex: 0 0 auto;
+  justify-content: space-between;
   margin-bottom: 8px;
 
   ta-place-icon {
@@ -28,9 +30,9 @@ dl {
 }
 
 dt {
+  align-items: center;
   background-color: $semitransparent-light;
   display: flex;
-  align-items: center;
   padding: 8px;
 
   ta-place-icon {

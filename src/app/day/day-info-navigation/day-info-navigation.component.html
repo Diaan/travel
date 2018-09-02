@@ -1,14 +1,14 @@
 <ul>
-  <li [routerLink]="['/day',currentDay,'description']"
-      [class.active]="tab==='description'">
+  <li routerLink="description"
+      routerLinkActive="active">
     beschrijving
   </li>
-  <li [routerLink]="['/day',currentDay,'places']"
-      [class.active]="tab==='places'">
+  <li routerLink="places"
+      routerLinkActive="active">
     plaatsen
   </li>
-  <li [routerLink]="['/day',currentDay,'photos']"
-      [class.active]="tab==='photos'">
+  <li routerLink="photos"
+      routerLinkActive="active">
     foto's
   </li>
 </ul>

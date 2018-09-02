@@ -1,8 +1,7 @@
-<div *ngIf="types | async as types">
+<div>
   <ta-place-icon *ngFor="let type of types"
                  [class.active]="type===currentFilter"
                  [category]="type"
-                 [big]="true"
                  (click)="filter(type)"></ta-place-icon>
 </div>
 <dl *ngIf="filteredPlaces | async as places">
