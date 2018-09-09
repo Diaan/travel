@@ -1,3 +1,3 @@
-<p>
-  day-photos works!
-</p>
+<div *ngIf="day | async as day">
+  <ta-flickr-photo *ngFor="let photo of photos | async" [photo]="photo"></ta-flickr-photo>
+</div>

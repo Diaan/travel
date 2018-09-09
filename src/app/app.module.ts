@@ -10,6 +10,7 @@ import { ItineraryModule } from './itinerary/itinerary.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { environment } from '../environments/environment';
     AngularFireStorageModule,
     BrowserModule,
     DayModule,
+    HttpClientModule,
     ItineraryModule,
     RouterModule.forRoot(AppRoutes)
   ],

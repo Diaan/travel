@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DayHeaderComponent } from './day-header/day-header.component';
 import { PlaceIconComponent } from './place-icon/place-icon.component';
 import { MapsUrlPipe } from './maps-url.pipe';
+import { FlickrPhotoComponent } from './flickr-photo/flickr-photo.component';
 
 @NgModule({
   imports: [
@@ -15,14 +16,16 @@ import { MapsUrlPipe } from './maps-url.pipe';
     DayNumberComponent,
     DayHeaderComponent,
     PlaceIconComponent,
-    MapsUrlPipe
+    MapsUrlPipe,
+    FlickrPhotoComponent
   ],
   exports: [
     CityNamePipe,
     DayNumberComponent,
     DayHeaderComponent,
     MapsUrlPipe,
-    PlaceIconComponent
+    PlaceIconComponent,
+    FlickrPhotoComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,3 @@
+<ng-container *ngIf="enrichedPhoto | async as photo">
+  <img [src]="photo.size[1].source">
+</ng-container>
