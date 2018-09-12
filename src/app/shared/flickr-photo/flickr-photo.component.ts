@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PhotoService } from '@core/photo.service';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ta-flickr-photo',
@@ -9,13 +7,19 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./flickr-photo.component.scss']
 })
 export class FlickrPhotoComponent implements OnInit {
-  enrichedPhoto: Observable<any>;
 
   @Input() photo: any;
+  @Input() size: string;
+
   constructor(private service: PhotoService) { }
 
   ngOnInit() {
-    this.enrichedPhoto = this.service.enrich(this.photo);
+    if (!this.photo.sizes) {
+      this.service.enrich(this.photo).subscribe(photo => {
+        if (photo.size) {
+          this.photo.sizes = photo.size;
+        }
+      });
+    }
   }
-
 }

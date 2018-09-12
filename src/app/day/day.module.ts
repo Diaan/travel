@@ -9,6 +9,7 @@ import { DayInfoNavigationComponent } from './day-info-navigation/day-info-navig
 import { DayNavigationComponent } from './day-navigation/day-navigation.component';
 import { DayPhotosComponent } from './day-photos/day-photos.component';
 import { DayPlacesComponent } from './day-places/day-places.component';
+import { FlickrPhotoModule } from '@shared/flickr-photo/flickr-photo.module';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    FlickrPhotoModule
   ],
   declarations: [
     DayComponent,

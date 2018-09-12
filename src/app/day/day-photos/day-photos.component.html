@@ -1,3 +1,6 @@
 <div *ngIf="day | async as day">
-  <ta-flickr-photo *ngFor="let photo of photos | async" [photo]="photo"></ta-flickr-photo>
+  <ta-flickr-photo *ngFor="let photo of photos | async"
+                   [size]="'Large Square'"
+                   [photo]="photo"
+                   (click)="openPhoto(photo)"></ta-flickr-photo>
 </div>

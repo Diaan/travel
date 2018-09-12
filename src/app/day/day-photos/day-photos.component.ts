@@ -31,4 +31,7 @@ export class DayPhotosComponent implements OnInit {
     );
   }
 
+  openPhoto(photo) {
+    console.log(photo);
+  }
 }
