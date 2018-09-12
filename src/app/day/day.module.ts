@@ -10,6 +10,7 @@ import { DayNavigationComponent } from './day-navigation/day-navigation.componen
 import { DayPhotosComponent } from './day-photos/day-photos.component';
 import { DayPlacesComponent } from './day-places/day-places.component';
 import { FlickrPhotoModule } from '@shared/flickr-photo/flickr-photo.module';
+import { DialogModule } from '@angular/cdk-experimental/dialog';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
+    DialogModule,
     FlickrPhotoModule
   ],
   declarations: [

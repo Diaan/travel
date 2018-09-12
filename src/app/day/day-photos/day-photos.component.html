@@ -1,6 +1,18 @@
 <div *ngIf="day | async as day">
-  <ta-flickr-photo *ngFor="let photo of photos | async"
+  <ta-flickr-photo *ngFor="let photo of photos"
                    [size]="'Large Square'"
                    [photo]="photo"
                    (click)="openPhoto(photo)"></ta-flickr-photo>
 </div>
+
+<ng-template #photoOverlay>
+  <ta-flickr-photo *ngIf="enlargedPhoto"
+                    [size]="'Medium 640'"
+                    (click)="close()"
+                    [photo]="enlargedPhoto"></ta-flickr-photo>
+  <nav>
+    <button (click)="previous()" *ngIf="enlargedPhotoIndex>0">&lt;</button>
+    <button (click)="close()">&times;</button>
+    <button (click)="next()" *ngIf="enlargedPhotoIndex < photos.length - 1">️&gt;</button>
+  </nav>
+</ng-template>

@@ -11,7 +11,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AnimationDriver } from '@angular/animations/browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     BrowserModule,
+    BrowserAnimationsModule,
     DayModule,
     HttpClientModule,
     ItineraryModule,

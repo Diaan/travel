@@ -11,8 +11,27 @@ div {
   display: grid;
   grid-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr;
+}
 
-  ta-flickr-photo {
+nav {
+  align-items: center;
+  bottom: 0px;
+  display: flex;
+  height: 72px;
+  justify-content: space-evenly;
+  left:0;
+  padding: 16px;
+  position: absolute;
+  width: 100vw;
 
+  button{
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    font: $heading-big;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
   }
 }

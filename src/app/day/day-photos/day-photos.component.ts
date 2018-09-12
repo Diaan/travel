@@ -1,9 +1,10 @@
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { DayDetails } from '@core/itinerary.service';
 import { PhotoService } from '@core/photo.service';
 import { map, switchMap  } from 'rxjs/operators';
+import { Dialog, DialogRef } from '@angular/cdk-experimental/dialog';
 
 @Component({
   selector: 'ta-day-photos',
@@ -11,12 +12,17 @@ import { map, switchMap  } from 'rxjs/operators';
   styleUrls: ['./day-photos.component.scss']
 })
 export class DayPhotosComponent implements OnInit {
-  photos: Observable<any>;
+  photos: any;
   day: Observable<DayDetails>;
+  enlargedPhoto: any;
+  dialogRef: any;
+  enlargedPhotoIndex: number;
 
+  @ViewChild('photoOverlay', { read: TemplateRef }) photoOverlay: TemplateRef<any>;
   constructor(
     private service: PhotoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: Dialog
   ) { }
 
   ngOnInit() {
@@ -25,13 +31,31 @@ export class DayPhotosComponent implements OnInit {
       map(({ day }) => day)
     );
 
-    this.photos = this.day.pipe(
+    this.day.pipe(
       switchMap(day => this.service.photos(day.day)),
       map(photos => photos.photo)
-    );
+    ).subscribe(photos => this.photos = photos);
   }
 
   openPhoto(photo) {
-    console.log(photo);
+    this.enlargedPhoto = photo;
+    this.enlargedPhotoIndex = this.photos.findIndex(p => p.id === this.enlargedPhoto.id);
+    if (!this.dialogRef || (this.dialogRef && this.dialogRef.componentInstance === null)) {
+      this.dialogRef = this.dialog.openFromTemplate(this.photoOverlay, {
+        maxWidth: '100vw'
+      });
+    }
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
+
+  previous() {
+    this.openPhoto(this.photos[this.enlargedPhotoIndex - 1]);
+  }
+
+  next() {
+    this.openPhoto(this.photos[this.enlargedPhotoIndex + 1]);
   }
 }

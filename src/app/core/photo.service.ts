@@ -6,7 +6,8 @@ import { map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PhotoService {
-  private apiUrl = 'https://api.flickr.com/services/rest/?api_key=c4f59d5decebd854cf973495271b8fe4&format=json&nojsoncallback=1';
+  // private apiUrl = 'https://api.flickr.com/services/rest/?api_key=c4f59d5decebd854cf973495271b8fe4&format=json&nojsoncallback=1';
+  private apiUrl = 'https://api.flickr.com/services/rest/?api_key=e4af0dcdd9718b4d99fc407d7a7c3d27&format=json&nojsoncallback=1';
 
   constructor(private http: HttpClient) { }
 
