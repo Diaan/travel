@@ -7,7 +7,7 @@
   overflow: auto;
 }
 
-div {
+div.grid {
   display: grid;
   grid-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr;
@@ -18,11 +18,24 @@ nav {
   bottom: 0px;
   display: flex;
   height: 72px;
-  justify-content: space-evenly;
+  justify-content: center;
   left:0;
   padding: 16px;
   position: absolute;
   width: 100vw;
+
+  ul{
+    display: flex;
+    margin: 0;
+    max-width: $max-width;
+    padding: 0;
+    justify-content: space-between;
+    width: 100%;
+
+    li{
+      width: 32px;
+    }
+  }
 
   button{
     align-items: center;

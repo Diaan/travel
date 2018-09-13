@@ -48,6 +48,7 @@ export class DayPhotosComponent implements OnInit {
   }
 
   close() {
+    console.log('close');
     this.dialogRef.close();
   }
 

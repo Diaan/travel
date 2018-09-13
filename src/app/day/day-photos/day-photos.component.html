@@ -1,4 +1,4 @@
-<div *ngIf="day | async as day">
+<div *ngIf="day | async as day" class="grid">
   <ta-flickr-photo *ngFor="let photo of photos"
                    [size]="'Large Square'"
                    [photo]="photo"
@@ -6,13 +6,24 @@
 </div>
 
 <ng-template #photoOverlay>
-  <ta-flickr-photo *ngIf="enlargedPhoto"
-                    [size]="'Medium 640'"
-                    (click)="close()"
-                    [photo]="enlargedPhoto"></ta-flickr-photo>
+  <div (swiperight)="previous()"
+       (swipeup)="close()"
+       (swipeleft)="next()">
+    <ta-flickr-photo *ngIf="enlargedPhoto"
+                      [size]="'Medium 640'"
+                      [photo]="enlargedPhoto"></ta-flickr-photo>
+  </div>
   <nav>
-    <button (click)="previous()" *ngIf="enlargedPhotoIndex>0">&lt;</button>
-    <button (click)="close()">&times;</button>
-    <button (click)="next()" *ngIf="enlargedPhotoIndex < photos.length - 1">️&gt;</button>
+    <ul>
+      <li>
+        <button (click)="previous()" *ngIf="enlargedPhotoIndex>0">&lt;</button>
+      </li>
+      <li>
+        <button (click)="close()">&times;</button>
+      </li>
+      <li>
+        <button (click)="next()" *ngIf="enlargedPhotoIndex < photos.length - 1">️&gt;</button>
+      </li>
+    </ul>
   </nav>
 </ng-template>
