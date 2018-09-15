@@ -34,6 +34,8 @@ nav {
 
     li{
       width: 32px;
+      justify-items: center;
+      display: flex;
     }
   }
 
@@ -46,5 +48,10 @@ nav {
     height: 32px;
     justify-content: center;
     width: 32px;
+
+    svg{
+      width: 16px;
+      height: 16px;
+    }
   }
 }

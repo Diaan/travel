@@ -16,13 +16,17 @@
   <nav>
     <ul>
       <li>
-        <button (click)="previous()" *ngIf="enlargedPhotoIndex>0">&lt;</button>
+        <button (click)="previous()" *ngIf="enlargedPhotoIndex>0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M207 30L177 0 49 128l128 128 30-30-98-98z"/></svg>
+        </button>
       </li>
       <li>
         <button (click)="close()">&times;</button>
       </li>
       <li>
-        <button (click)="next()" *ngIf="enlargedPhotoIndex < photos.length - 1">️&gt;</button>
+        <button (click)="next()" *ngIf="enlargedPhotoIndex < photos.length - 1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M207 30L177 0 49 128l128 128 30-30-98-98z" transform="rotate(180 128 128)"/></svg>
+        </button>
       </li>
     </ul>
   </nav>

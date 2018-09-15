@@ -46,17 +46,19 @@ export class DayPhotosComponent implements OnInit {
       });
     }
   }
-
   close() {
-    console.log('close');
     this.dialogRef.close();
   }
 
   previous() {
-    this.openPhoto(this.photos[this.enlargedPhotoIndex - 1]);
+    if (this.photos[this.enlargedPhotoIndex - 1]) {
+      this.openPhoto(this.photos[this.enlargedPhotoIndex - 1]);
+    }
   }
 
   next() {
-    this.openPhoto(this.photos[this.enlargedPhotoIndex + 1]);
+    if (this.photos[this.enlargedPhotoIndex + 1]) {
+      this.openPhoto(this.photos[this.enlargedPhotoIndex + 1]);
+    }
   }
 }
