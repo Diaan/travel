@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800,900');
-@import 'variables';
+@import '@angular/cdk/_overlay';
+@import 'styles/variables';
+@import 'styles/cdk';
+
+* {
+  box-sizing: border-box;
+}
 
 html,
 body {
@@ -35,4 +41,11 @@ article {
 
 *:focus{
   outline: none;
+}
+
+button{
+  appearance: none;
+  border:none;
+  display: block;
+  padding: 0;
 }

@@ -1,0 +1,10 @@
+@include cdk-overlay();
+
+.cdk-overlay-container {
+  background-color: $semitransparent_dark;
+}
+.cdk-overlay-container cdk-dialog-container {
+  max-width: 100vw;
+  padding: 0;
+  margin: 16px;
+}

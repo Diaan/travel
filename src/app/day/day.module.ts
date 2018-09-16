@@ -1,3 +1,4 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -9,6 +10,8 @@ import { DayInfoNavigationComponent } from './day-info-navigation/day-info-navig
 import { DayNavigationComponent } from './day-navigation/day-navigation.component';
 import { DayPhotosComponent } from './day-photos/day-photos.component';
 import { DayPlacesComponent } from './day-places/day-places.component';
+import { FlickrPhotoModule } from '@shared/flickr-photo/flickr-photo.module';
+import { DialogModule } from '@angular/cdk-experimental/dialog';
 
 const routes: Routes = [
   {
@@ -28,7 +31,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    BrowserModule,
+    SharedModule,
+    DialogModule,
+    FlickrPhotoModule
   ],
   declarations: [
     DayComponent,

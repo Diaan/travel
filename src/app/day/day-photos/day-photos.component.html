@@ -1,3 +1,40 @@
-<p>
-  day-photos works!
-</p>
+<div *ngIf="day | async as day" class="grid">
+  <ng-container *ngIf="photos?.length > 0; else noPhotos">
+    <ta-flickr-photo *ngFor="let photo of photos"
+                    [size]="'Large Square'"
+                    [photo]="photo"
+                    (click)="openPhoto(photo)"></ta-flickr-photo>
+  </ng-container>
+  <ng-template #noPhotos>
+    <div class='no-photos'>
+      no photos for today (yet)
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #photoOverlay>
+  <div (swiperight)="previous()"
+       (swipeup)="close()"
+       (swipeleft)="next()">
+    <ta-flickr-photo *ngIf="enlargedPhoto"
+                      [size]="'Medium 640'"
+                      [photo]="enlargedPhoto"></ta-flickr-photo>
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <button (click)="previous()" *ngIf="enlargedPhotoIndex>0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M207 30L177 0 49 128l128 128 30-30-98-98z"/></svg>
+        </button>
+      </li>
+      <li>
+        <button (click)="close()">&times;</button>
+      </li>
+      <li>
+        <button (click)="next()" *ngIf="enlargedPhotoIndex < photos.length - 1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M207 30L177 0 49 128l128 128 30-30-98-98z" transform="rotate(180 128 128)"/></svg>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</ng-template>
