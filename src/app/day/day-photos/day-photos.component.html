@@ -1,8 +1,15 @@
 <div *ngIf="day | async as day" class="grid">
-  <ta-flickr-photo *ngFor="let photo of photos"
-                   [size]="'Large Square'"
-                   [photo]="photo"
-                   (click)="openPhoto(photo)"></ta-flickr-photo>
+  <ng-container *ngIf="photos?.length > 0; else noPhotos">
+    <ta-flickr-photo *ngFor="let photo of photos"
+                    [size]="'Large Square'"
+                    [photo]="photo"
+                    (click)="openPhoto(photo)"></ta-flickr-photo>
+  </ng-container>
+  <ng-template #noPhotos>
+    <div class='no-photos'>
+      no photos for today (yet)
+    </div>
+  </ng-template>
 </div>
 
 <ng-template #photoOverlay>

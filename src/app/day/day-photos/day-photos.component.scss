@@ -11,6 +11,15 @@ div.grid {
   display: grid;
   grid-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+
+  div{
+    grid-column: 1/4;
+    background-color: $semitransparent_light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 nav {
