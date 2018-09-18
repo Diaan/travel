@@ -42,7 +42,7 @@ jobs:
           # the current branch
           - run:
               name: Building
-              command: yarn run build --prod
+              command: yarn run pwa
 
           # Cache the dist folder for the deploy job
           - save_cache:
